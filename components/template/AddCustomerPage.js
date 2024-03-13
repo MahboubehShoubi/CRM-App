@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { useRouter } from "next/router"
-import Form from "../module/Form"
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Form from "../module/Form";
 
 
 function AddCustomerPage() {
@@ -22,11 +22,13 @@ function AddCustomerPage() {
       const res = await fetch("/api/customer" , {
         method : "POST",
         body : JSON.stringify({data : form}),
-        headers : {"Content-Type" : "application/json"}
+        headers : {"Content-Type": "application/json"},
       })
       const data = await res.json();
       console.log(data);
-      if(data.statuse === "success") router.push("/");
+      if(data.status === "success"){
+        router.push("/");
+      } 
       console.log(form);
     }
 
